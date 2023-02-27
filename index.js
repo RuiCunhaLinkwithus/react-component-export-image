@@ -89,7 +89,7 @@ const exportComponent = (node, {
             );
             pdf.save(fileName);
         } else {
-            saveAs(canvas.toDataURL(type, 1.0), fileName);
+            return canvas.toDataURL(type, 1.0);
         }
     });
 };
@@ -99,7 +99,7 @@ const exportComponent = (node, {
  * @param  {string} fileName='component.png'
  * @param  {object} html2CanvasOptions={}
  */
-const exportComponentAsPNG = (node, parameters = {}) => exportComponent(node, {...DEFAULT_PNG, ...parameters});
+const exportComponentAsPNG = async (node, parameters = {}) => exportComponent(node, {...DEFAULT_PNG, ...parameters});
 
 /**
  * @param  {React.RefObject} node
@@ -107,7 +107,7 @@ const exportComponentAsPNG = (node, parameters = {}) => exportComponent(node, {.
  * @param  {string} type=fileType.JPEG
  * @param  {object} html2CanvasOptions={}
  */
-const exportComponentAsJPEG = (node, parameters = {}) => exportComponent(node, {...DEFAULT_JPEG, ...parameters});
+const exportComponentAsJPEG = async (node, parameters = {}) => exportComponent(node, {...DEFAULT_JPEG, ...parameters});
 
 /**
  * @param  {React.RefObject} node
